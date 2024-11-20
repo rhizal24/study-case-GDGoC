@@ -15,9 +15,11 @@ export default function Home() {
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="w-[100%] h-auto bg-[#FAFAFA] px-11 font-montserrat text-[#252B42]">
-      <div className="container w-[100%] h-auto py-14">
-        <div className="relative">
+    <div className="w-[100%] h-auto bg-[#FAFAFA] px-11 font-montserrat text-[#252B42] flex flex-col">
+      {/* Container */}
+      <div className="w-[100%] h-auto py-14 md:flex md:flex-row md:items-center md:px-28">
+        {/* Picture */}
+        <div className="relative w-full md:w-[50%]">
           <div className="relative">
             <div className="absolute w-full z-10 flex h-full justify-between items-center px-5">
               <button type="button">
@@ -43,12 +45,12 @@ export default function Home() {
               modules={[Navigation, Pagination]}
               spaceBetween={15}
               slidesPerView={1}
-              initialSlide={1}
+              initialSlide={0}
               navigation={{
                 prevEl: ".button-prev-hero",
                 nextEl: ".button-next-hero",
               }}
-              className="relative w-full rounded-lg"
+              className="w-full rounded-lg relative bg-blue-600"
             >
               <SwiperSlide className="outline-0">
                 <Image
@@ -56,7 +58,7 @@ export default function Home() {
                   width={400}
                   height={400}
                   alt="Product1"
-                  className="rounded-lg"
+                  className="rounded-lg w-full"
                 />
               </SwiperSlide>
               <SwiperSlide className="outline-0">
@@ -65,7 +67,10 @@ export default function Home() {
                   width={400}
                   height={400}
                   alt="Product1"
-                  className="rounded-lg"
+
+
+                  
+                  className="rounded-lg md:w-full lg:w-full"
                 />
               </SwiperSlide>
             </Swiper>
@@ -137,7 +142,8 @@ export default function Home() {
             </Swiper>
           </div>
         </div>
-        <div className="px-9">
+        {/* Information Product */}
+        <div className="px-9 md:w-[50%]">
           {products.map((product) => {
             return (
               <div key={product} className="flex flex-col">
