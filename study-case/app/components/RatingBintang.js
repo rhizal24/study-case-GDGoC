@@ -18,12 +18,14 @@ const RatingBintang = ({ rating, setRating, totalStars = 5 }) => {
       return (
         <span
           key={index}
-          className={`star ${isFilled ? "filled" : ""}`}
+          className={`star ${
+            isFilled ? "filled" : ""
+          } text-[7vw] md:text-[20px]`}
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleClick(index)}
           style={{
-            fontSize: "30px",
+            // fontSize: "7vw",
             cursor: "pointer",
             color: isFilled ? "gold" : "gray",
             transition: "color 0.3s",

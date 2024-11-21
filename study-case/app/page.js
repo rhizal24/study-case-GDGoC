@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="w-[100%] h-auto bg-[#FAFAFA] px-11 font-montserrat text-[#252B42] flex flex-col">
       {/* Container */}
-      <div className="w-[100%] h-auto py-14 md:flex md:flex-row md:items-center md:px-28">
+      <div className="w-[100%] h-auto py-14 md:flex md:flex-row md:items-center md:px-20 lg:px-35 md:py-4">
         {/* Picture */}
         <div className="relative w-full md:w-[50%]">
           <div className="relative">
@@ -50,128 +50,88 @@ export default function Home() {
                 prevEl: ".button-prev-hero",
                 nextEl: ".button-next-hero",
               }}
-              className="w-full rounded-lg relative bg-blue-600"
+              className="w-full rounded-lg relative"
             >
-              <SwiperSlide className="outline-0">
-                <Image
-                  src="/pict-product/product-1.jpg"
-                  width={400}
-                  height={400}
-                  alt="Product1"
-                  className="rounded-lg w-full"
-                />
-              </SwiperSlide>
-              <SwiperSlide className="outline-0">
-                <Image
-                  src="/pict-product/product-1.jpg"
-                  width={400}
-                  height={400}
-                  alt="Product1"
-
-
-                  
-                  className="rounded-lg md:w-full lg:w-full"
-                />
-              </SwiperSlide>
+              {[
+                "/pict-product/product-1.jpg",
+                "/pict-product/product-1.jpg",
+              ].map((item) => {
+                return (
+                  <SwiperSlide className="outline-0">
+                    <Image
+                      src="/pict-product/product-1.jpg"
+                      width={400}
+                      height={400}
+                      alt="Product1"
+                      className="rounded-lg w-full"
+                    />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
-          <div className="listProduct py-14">
+          <div className="listProduct py-4">
             <Swiper
               slidesPerView={3}
-              spaceBetween={5}
+              spaceBetween={15}
               pagination={{
                 clickable: true,
               }}
               modules={[Pagination]}
               className="mySwiper rounded-md gap-2"
             >
-              <SwiperSlide>
-                <Image
-                  src="/pict-product/list-pict-2.jpg"
-                  width={120}
-                  height={200}
-                  alt="List-1"
-                  className="rounded-md"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="/pict-product/list-pict-1.jpg"
-                  width={120}
-                  height={200}
-                  alt="List-1"
-                  className="rounded-md"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="/pict-product/list-pict-2.jpg"
-                  width={120}
-                  height={200}
-                  alt="List-1"
-                  className="rounded-md"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="/pict-product/list-pict-1.jpg"
-                  width={120}
-                  height={200}
-                  alt="List-1"
-                  className="rounded-md"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="/pict-product/list-pict-2.jpg"
-                  width={120}
-                  height={200}
-                  alt="List-1"
-                  className="rounded-md"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="/pict-product/list-pict-1.jpg"
-                  width={120}
-                  height={200}
-                  alt="List-1"
-                  className="rounded-md"
-                />
-              </SwiperSlide>
+              {[
+                "/pict-product/list-pict-1.jpg",
+                "/pict-product/list-pict-2.jpg",
+              ].map((item) => {
+                return (
+                  <SwiperSlide>
+                    <div className="w-full aspect-[4/3] relative">
+                      <Image
+                        src={item}
+                        alt="List-1"
+                        className="rounded-md "
+                        fill
+                      />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </div>
         {/* Information Product */}
-        <div className="px-9 md:w-[50%]">
+        <div className="px-4 md:w-[60%] md:pl-12 ">
           {products.map((product) => {
             return (
               <div key={product} className="flex flex-col">
-                <div className="font-[600] text-[23px]">{product.name}</div>
-                <div className="flex items-center gap-3">
-                  <div>
+                <div className="font-[600] text-[5vw] md:text-[2vw]">
+                  {product.name}
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="pr-3">
                     <RatingBintang rating={rating} setRating={setRating} />
                   </div>
-                  <div className="text-[#737373] font-montserratBold py-3">
+                  <div className="text-[#737373] font-montserratBold py-3 text-[4vw] md:text-[1.8vw]">
                     {product.review + " Review"}
                   </div>
                 </div>
-                <div className="text-[27px] font-montserratBold pt-2">
+                <div className="text-[6vw] font-montserratBold pt-2 md:text-[2.5vw]">
                   {product.price}
                 </div>
-                <div className="text-[18px] font-montserratBold flex text-[#737373]">
+                <div className="text-[3.5vw] font-montserratBold flex text-[#737373] md:text-[1.5vw]">
                   <div>Availability : </div>
                   <div
                     className={`${
                       product.status === "In Stock"
                         ? "text-[#23A6F0]"
                         : "text-[#FF0000]"
-                    } pb-9 pl-1`}
+                    } pb-9 pl-1 md:pb-5`}
                   >
                     {product.status}
                   </div>
                 </div>
-                <div className="text-[15px] font-[400] text-[#858585] text-justify">
+                <div className="text-[3vw] font-[400] text-[#858585] text-justify md:text-[1.2vw]">
                   {product.deskription}
                 </div>
               </div>
@@ -181,41 +141,44 @@ export default function Home() {
           <div className="flex justify-center py-2">
             <div className="w-[99%] border-t-[1px] my-3 border-[#BDBDBD]"></div>
           </div>
-          <div className="flex gap-3 pb-4">
-            <div className="w-[40px] h-[40px] rounded-full bg-[#23A6F0] hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out"></div>
-            <div className="w-[40px] h-[40px] rounded-full bg-[#2DC071] hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out"></div>
-            <div className="w-[40px] h-[40px] rounded-full bg-[#E77C40] hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out"></div>
-            <div className="w-[40px] h-[40px] rounded-full bg-[#252B42] hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out"></div>
+          <div className="flex gap-3 md:gap-2 pb-4 w-[50%] md:w-[50%]">
+            {[
+              "bg-[#23A6F0]",
+              "bg-[#2DC071]",
+              "bg-[#E77C40]",
+              "bg-[#252B42]",
+            ].map((item) => {
+              return (
+                <div
+                  key={item}
+                  className={`w-[15%] md:w-[200px] aspect-square rounded-full ${item} hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out`}
+                />
+              );
+            })}
           </div>
-          <div className="py-10 flex items-center gap-1 justify-between">
-            <button className="py-3 px-5 rounded-md bg-[#23A6F0] font-montserratBold text-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-[#23A6F0] hover:border-[1px] hover:border-[#23A6F0] transition-all duration-400 text-[14px] ease-in-out">
+          <div className="py-10 flex items-center justify-between gap-2">
+            <button className="py-3 px-4 rounded-md bg-[#23A6F0] font-montserratBold text-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-[#23A6F0] border-[1px] hover:border-[#23A6F0] transition-all duration-400 text-[2.2vw] ease-in-out md:text-[1.2vw]">
               Select Options
             </button>
-            <div className="flex items-end gap-2">
-              <button className="border-[#E8E8E8] border-2 bg-[#FFFFFF] p-3 rounded-full flex items-center hover:scale-105 transition-all duration-300">
-                <Image
-                  src="/icon/love.svg"
-                  width={20}
-                  height={20}
-                  alt="loveButton"
-                />
-              </button>
-              <button className="border-[#E8E8E8] border-2 bg-[#FFFFFF] p-3 rounded-full flex items-center hover:scale-105 transition-all duration-300">
-                <Image
-                  src="/icon/shop.svg"
-                  width={20}
-                  height={20}
-                  alt="shopButton"
-                />
-              </button>
-              <button className="border-[#E8E8E8] border-2 bg-[#FFFFFF] py-[14px] px-3 rounded-full flex items-center  hover:scale-105 transition-all duration-300">
-                <Image
-                  src="/icon/eye.svg"
-                  width={20}
-                  height={20}
-                  alt="eyeButton"
-                />
-              </button>
+            <div className="flex  gap-2">
+              {["/icon/love.svg", "/icon/shop.svg", "/icon/eye.svg"].map(
+                (item) => {
+                  return (
+                    <button
+                      key={item}
+                      className="border-[#E8E8E8] border-2 bg-[#FFFFFF] p-3 rounded-full flex items-center hover:scale-105 transition-all duration-300 md:p-2"
+                    >
+                      <Image
+                        src={item}
+                        width={20}
+                        height={20}
+                        alt="loveButton"
+                        className="w-[15px] aspect-square md:w-[15px]"
+                      />
+                    </button>
+                  );
+                }
+              )}
             </div>
           </div>
         </div>
@@ -225,7 +188,7 @@ export default function Home() {
           BESTSELLER PRODUCTS
         </div>
         <div className="w-[99%] border-t-[1px] my-7 border-[#BDBDBD]"></div>
-        <div>
+        <div className="flex flex-wrap">
           {bestSeller.map((best) => {
             return (
               <BestSeller
