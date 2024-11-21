@@ -20,7 +20,7 @@ const RatingBintang = ({ rating, setRating, totalStars = 5 }) => {
           key={index}
           className={`star ${
             isFilled ? "filled" : ""
-          } text-[7vw] md:text-[20px]`}
+          } text-[7vw] md:text-[3vw] lg:text-[3.8vw]`}
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleClick(index)}

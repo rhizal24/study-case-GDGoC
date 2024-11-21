@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="w-[100%] h-auto bg-[#FAFAFA] px-11 font-montserrat text-[#252B42] flex flex-col">
       {/* Container */}
-      <div className="w-[100%] h-auto py-14 md:flex md:flex-row md:items-center md:px-20 lg:px-35 md:py-4">
+      <div className="w-[100%] h-auto py-14 md:flex md:flex-row md:items-center md:px-16 lg:px-24 md:py-4 xl:px-28 2xl:px-40">
         {/* Picture */}
         <div className="relative w-full md:w-[50%]">
           <div className="relative">
@@ -55,11 +55,11 @@ export default function Home() {
               {[
                 "/pict-product/product-1.jpg",
                 "/pict-product/product-1.jpg",
-              ].map((item) => {
+              ].map((item, index) => {
                 return (
-                  <SwiperSlide className="outline-0">
+                  <SwiperSlide key={index} className="outline-0">
                     <Image
-                      src="/pict-product/product-1.jpg"
+                      src={item}
                       width={400}
                       height={400}
                       alt="Product1"
@@ -83,9 +83,9 @@ export default function Home() {
               {[
                 "/pict-product/list-pict-1.jpg",
                 "/pict-product/list-pict-2.jpg",
-              ].map((item) => {
+              ].map((item, index) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <div className="w-full aspect-[4/3] relative">
                       <Image
                         src={item}
@@ -101,25 +101,25 @@ export default function Home() {
           </div>
         </div>
         {/* Information Product */}
-        <div className="px-4 md:w-[60%] md:pl-12 ">
+        <div className="px-4 md:w-[50%] md:pl-10 md:pr-0 md:py-[6px] lg:pl-14">
           {products.map((product) => {
             return (
               <div key={product} className="flex flex-col">
-                <div className="font-[600] text-[5vw] md:text-[2vw]">
+                <div className="font-[600] text-[5vw] md:text-[2vw] lg:text-[2.8vw]">
                   {product.name}
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="pr-3">
+                  <div className="pr-1">
                     <RatingBintang rating={rating} setRating={setRating} />
                   </div>
-                  <div className="text-[#737373] font-montserratBold py-3 text-[4vw] md:text-[1.8vw]">
+                  <div className="text-[#737373] font-montserratBold py-3 text-[4vw] md:text-[1.8vw] lg:text-[2.22vw]">
                     {product.review + " Review"}
                   </div>
                 </div>
-                <div className="text-[6vw] font-montserratBold pt-2 md:text-[2.5vw]">
+                <div className="text-[6vw] font-montserratBold pt-2 md:pt-0 md:text-[2vw] lg:text-[2.8vw] lg:pt-2">
                   {product.price}
                 </div>
-                <div className="text-[3.5vw] font-montserratBold flex text-[#737373] md:text-[1.5vw]">
+                <div className="text-[3.5vw] font-montserratBold flex text-[#737373] md:text-[1.1vw] lg:text-[1.6vw]">
                   <div>Availability : </div>
                   <div
                     className={`${
@@ -131,17 +131,16 @@ export default function Home() {
                     {product.status}
                   </div>
                 </div>
-                <div className="text-[3vw] font-[400] text-[#858585] text-justify md:text-[1.2vw]">
+                <div className="text-[3vw] font-[400] text-[#858585] text-justify md:text-[1.2vw] lg:text-[1.4vw]">
                   {product.deskription}
                 </div>
               </div>
             );
           })}
-
           <div className="flex justify-center py-2">
             <div className="w-[99%] border-t-[1px] my-3 border-[#BDBDBD]"></div>
           </div>
-          <div className="flex gap-3 md:gap-2 pb-4 w-[50%] md:w-[50%]">
+          <div className="flex gap-3 md:gap-2 2xl:gap-4 pb-8 md:pb-4 w-[60%] md:w-[50%] lg:w-[50%] lg:pb-8 xl:w-[45%] xl:pb-12 2xl:w-[45%]">
             {[
               "bg-[#23A6F0]",
               "bg-[#2DC071]",
@@ -151,29 +150,29 @@ export default function Home() {
               return (
                 <div
                   key={item}
-                  className={`w-[15%] md:w-[200px] aspect-square rounded-full ${item} hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out`}
+                  className={`w-[15%] lg:w-[50%] md:w-[20%] aspect-square rounded-full ${item} hover:scale-110 hover:contrast-105 transition-all duration-300 ease-in-out`}
                 />
               );
             })}
           </div>
-          <div className="py-10 flex items-center justify-between gap-2">
-            <button className="py-3 px-4 rounded-md bg-[#23A6F0] font-montserratBold text-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-[#23A6F0] border-[1px] hover:border-[#23A6F0] transition-all duration-400 text-[2.2vw] ease-in-out md:text-[1.2vw]">
+          <div className="pt-5 flex items-center gap-5">
+            <button className="py-3 px-4 rounded-md bg-[#23A6F0] font-[900] text-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-[#23A6F0] border-[1px] hover:border-[#23A6F0] transition-all duration-400 text-[3vw] ease-in-out md:text-[1vw] lg:text-[1.3vw] xl:text-[1.5vw] xl:px-6 xl:py-4">
               Select Options
             </button>
-            <div className="flex  gap-2">
+            <div className="flex gap-2 md:w-[50%]">
               {["/icon/love.svg", "/icon/shop.svg", "/icon/eye.svg"].map(
                 (item) => {
                   return (
                     <button
                       key={item}
-                      className="border-[#E8E8E8] border-2 bg-[#FFFFFF] p-3 rounded-full flex items-center hover:scale-105 transition-all duration-300 md:p-2"
+                      className="border-[#E8E8E8] border-2 bg-[#FFFFFF] p-3 rounded-full flex items-center hover:scale-105 transition-all duration-300 md:p-2 xl:p-3 2xl:p-3"
                     >
                       <Image
                         src={item}
                         width={20}
                         height={20}
                         alt="loveButton"
-                        className="w-[15px] aspect-square md:w-[15px]"
+                        className="w-[15px] aspect-square md:w-[15px] lg:w-[20px] xl:w-[30px] 2xl:w-[35px]"
                       />
                     </button>
                   );
@@ -183,12 +182,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bestSeller px-1 flex flex-col items-center">
-        <div className="font-montserratBold text-[#252B42] text-[28px] mt-14">
+      <div className="px-1 flex flex-col items-center  md:px-12 lg:px-24 xl:px-12 2xl:px-40">
+        <div className="font-montserratBold text-[#252B42] text-[6vw] mt-14 md:text-[3vw] lg:text-[3vw] xl:text-[2.5vw] 2xl:text-[2vw]">
           BESTSELLER PRODUCTS
         </div>
         <div className="w-[99%] border-t-[1px] my-7 border-[#BDBDBD]"></div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap items-center justify-center">
           {bestSeller.map((best) => {
             return (
               <BestSeller
